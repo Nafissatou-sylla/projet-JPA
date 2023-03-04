@@ -56,6 +56,31 @@ class AccesJPATests {
 		assertNotNull(tous);
 		assertEquals(tous.size(), 2);
 		
-		
 	}
+	
+	
+	@Test
+	void testModifier() {
+		PersonnePOJO aModifier = null; jpa.lire(1);
+		PersonnePOJO aSauvegarder = null;
+		aModifier = jpa.lire(1);
+		aSauvegarder = jpa.lire(1);
+		
+		assertEquals("Dupond", aModifier.getNom());
+		assertEquals("gérard", aModifier.getPrenom());
+		assertEquals("0623547612", aModifier.getTelephone());
+		
+		aModifier.setNom("Sylla");
+		aModifier.setPrenom("Nafi");
+		aModifier.setTelephone("0712345678");
+		jpa.modifier(aModifier);
+		
+		aModifier = jpa.lire(1);
+		assertEquals("Sylla",  aModifier.getNom());
+		assertEquals("Nafi", aModifier.getPrenom());
+		assertEquals("0712345678", aModifier.getTelephone());
+		
+		jpa.modifier(aSauvegarder);
+		aModifier =jpa.lire(1);
+		}
 }

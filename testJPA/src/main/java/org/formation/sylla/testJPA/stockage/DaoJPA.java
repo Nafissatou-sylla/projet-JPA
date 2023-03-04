@@ -44,6 +44,13 @@ public class DaoJPA {
 		em.getTransaction().commit();
 	}
 	
+	public void modifier(PersonnePOJO pers) {
+		em.getTransaction().begin();
+		em.merge(pers);
+		em.flush();
+		em.getTransaction().commit();
+	}
+	
 	
 	public int getDerniereCle() {
 		return (int) em.createQuery("SELECT p.id FROM PersonnePOJO p ORDER BY p.id DESC LIMIT 1").getSingleResult();
