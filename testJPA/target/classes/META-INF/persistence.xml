@@ -3,10 +3,10 @@
 	<persistence-unit name="testJPA" transaction-type="RESOURCE_LOCAL">
 		<class>org.formation.sylla.testJPA.service.PersonnePOJO</class>
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/testjpa"/>
-			<property name="javax.persistence.jdbc.user" value="root"/>
-			<property name="javax.persistence.jdbc.password" value=""/>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/testjpa"/>
+			<property name="jakarta.persistence.jdbc.user" value="root"/>
+			<property name="jakarta.persistence.jdbc.password" value=""/>
+			<property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 		</properties>
 	</persistence-unit>
 </persistence>
