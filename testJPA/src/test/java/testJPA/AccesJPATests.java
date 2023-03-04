@@ -41,7 +41,7 @@ class AccesJPATests {
 		PersonnePOJO pers = new PersonnePOJO();
 		pers.setNom("Sylla");
 		pers.setPrenom("Nafi");
-		pers.setTelephone("0012345678");
+		pers.setTelephone("0612345678");
 		
 		assertNotNull(jpa.lireTous());
 		assertEquals(2,jpa.lireTous().size());

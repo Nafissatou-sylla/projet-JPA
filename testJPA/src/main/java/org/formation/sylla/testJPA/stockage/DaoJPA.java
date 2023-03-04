@@ -28,20 +28,20 @@ public class DaoJPA {
 	}
 	
 	public void creer(PersonnePOJO pers) {
-		//em.getTransaction().begin();
+		em.getTransaction().begin();
 		em.persist(pers);
 		em.flush();
 		em.refresh(pers);
-		//em.getTransaction().commit();
+		em.getTransaction().commit();
 	}
 	
 	public void supprimer(int cle) {
 		PersonnePOJO aSupprimer = null;
-		//em.getTransaction().begin();
+		em.getTransaction().begin();
 		aSupprimer =lire(cle);
 		em.remove(aSupprimer);
 		em.flush();
-		//em.getTransaction().commit();
+		em.getTransaction().commit();
 	}
 	
 	
