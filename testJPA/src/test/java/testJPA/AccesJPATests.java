@@ -31,6 +31,31 @@ class AccesJPATests {
 		pers = jpa.lire(1);
 		assertNotNull(pers);
 		assertEquals(1, pers.getId());
+		assertEquals("Dupond", pers.getNom());
 		System.out.println( "la personne a lire " + pers);
+	}
+	
+	@Test
+	void testCreerSupprimer() {
+		List<PersonnePOJO> tous = null;
+		PersonnePOJO pers = new PersonnePOJO();
+		pers.setNom("Sylla");
+		pers.setPrenom("Nafi");
+		pers.setTelephone("0012345678");
+		
+		assertNotNull(jpa.lireTous());
+		assertEquals(2,jpa.lireTous().size());
+		
+		jpa.creer(pers);
+		
+		tous = jpa.lireTous();
+		assertNotNull(tous);
+		assertEquals(tous.size(), 3);
+		
+		jpa.supprimer(jpa.getDerniereCle());
+		assertNotNull(tous);
+		assertEquals(tous.size(), 2);
+		
+		
 	}
 }

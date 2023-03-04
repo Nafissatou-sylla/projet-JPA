@@ -26,5 +26,28 @@ public class DaoJPA {
 	public PersonnePOJO lire(int cle) {
 		return (PersonnePOJO) em.createQuery("SELECT p FROM PersonnePOJO p WHERE p.id= " + cle).getSingleResult();
 	}
+	
+	public void creer(PersonnePOJO pers) {
+		//em.getTransaction().begin();
+		em.persist(pers);
+		em.flush();
+		em.refresh(pers);
+		//em.getTransaction().commit();
+	}
+	
+	public void supprimer(int cle) {
+		PersonnePOJO aSupprimer = null;
+		//em.getTransaction().begin();
+		aSupprimer =lire(cle);
+		em.remove(aSupprimer);
+		em.flush();
+		//em.getTransaction().commit();
+	}
+	
+	
+	public int getDerniereCle() {
+		return (int) em.createQuery("SELECT p.id FROM PersonnePOJO p ORDER BY p.id DESC LIMIT 1").getSingleResult();
+	}
+
 
 }
