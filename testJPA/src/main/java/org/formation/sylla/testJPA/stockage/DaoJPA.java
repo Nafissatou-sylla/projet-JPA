@@ -23,5 +23,8 @@ public class DaoJPA {
 	return em.createQuery("SELECT p FROM PersonnePOJO p").getResultList();
 	}
 
+	public PersonnePOJO lire(int cle) {
+		return (PersonnePOJO) em.createQuery("SELECT p FROM PersonnePOJO p WHERE p.id= " + cle).getSingleResult();
+	}
 
 }

@@ -25,4 +25,12 @@ class AccesJPATests {
 	}
 
 
+	@Test
+	void testLire() {
+		PersonnePOJO pers = null;
+		pers = jpa.lire(1);
+		assertNotNull(pers);
+		assertEquals(1, pers.getId());
+		System.out.println( "la personne a lire " + pers);
+	}
 }

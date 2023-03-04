@@ -59,4 +59,10 @@ public class PersonnePOJO implements Serializable {
 		this.telephone = telephone;
 	}
 
+	@Override
+	public String toString() {
+		return "PersonnePOJO [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone + "]";
+	}
+
+	
 }
