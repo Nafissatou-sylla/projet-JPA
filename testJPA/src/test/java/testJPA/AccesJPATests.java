@@ -63,10 +63,8 @@ class AccesJPATests {
 	void testModifier() {
 		PersonnePOJO aSauvegarder = null;
 		PersonnePOJO aModifier = null;
-		//aSauvegarder = jpa.lire(1);
 		aModifier = jpa.lire(1);
 		
-		System.out.println( "a sauvegarder " + aSauvegarder);
 		//on vérifie les données 
 		assertEquals("Dupond", aModifier.getNom());
 		assertEquals("gérard", aModifier.getPrenom());
@@ -83,19 +81,16 @@ class AccesJPATests {
 		assertEquals("Sylla",  aModifier.getNom());
 		assertEquals("Nafi", aModifier.getPrenom());
 		assertEquals("0712345678", aModifier.getTelephone());
-		System.out.println( "a sauvegarder " + aSauvegarder);
 		
 		//on remets à l'état initial
-		//jpa.modifier(aSauvegarder);
 		aSauvegarder =jpa.lire(1);
 		
-		System.out.println( "a sauvegarder " + aSauvegarder);
 		aSauvegarder.setNom("Dupond");
 		aSauvegarder.setPrenom("gérard");
 		aSauvegarder.setTelephone("0623547612");
 		
 		jpa.modifier(aSauvegarder);
-		
+
 		assertEquals("Dupond", aSauvegarder.getNom());
 		assertEquals("gérard", aSauvegarder.getPrenom());
 		assertEquals("0623547612", aSauvegarder.getTelephone());
