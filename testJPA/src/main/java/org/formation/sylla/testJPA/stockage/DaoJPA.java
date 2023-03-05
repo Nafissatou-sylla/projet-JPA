@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.formation.sylla.testJPA.service.PersonnePOJO;
 
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -33,6 +34,7 @@ public class DaoJPA {
 		em.flush();
 		em.refresh(pers);
 		em.getTransaction().commit();
+		em.close();
 	}
 	
 	public void supprimer(int cle) {
@@ -54,7 +56,7 @@ public class DaoJPA {
 	
 	public int getDerniereCle() {
 		return (int) em.createQuery("SELECT p.id FROM PersonnePOJO p ORDER BY p.id DESC LIMIT 1").getSingleResult();
-	}
+	}					
 
 
 }

@@ -1,5 +1,6 @@
 package testJPA;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.formation.sylla.testJPA.service.PersonnePOJO;
@@ -32,31 +33,33 @@ class AccesJPATests {
 		assertNotNull(pers);
 		assertEquals(1, pers.getId());
 		assertEquals("Dupond", pers.getNom());
-		System.out.println( "la personne a lire " + pers);
+		assertEquals("gérard", pers.getPrenom());
+		assertEquals("0623547612", pers.getTelephone());
 	}
 	
-//	@Test
-//	void testCreerSupprimer() {
-//		List<PersonnePOJO> tous = null;
-//		PersonnePOJO pers = new PersonnePOJO();
-//		pers.setNom("Sylla");
-//		pers.setPrenom("Nafi");
-//		pers.setTelephone("0612345678");
-//		
-//		assertNotNull(jpa.lireTous());
-//		assertEquals(2,jpa.lireTous().size());
-//		
-//		jpa.creer(pers);
-//		
-//		tous = jpa.lireTous();
-//		assertNotNull(tous);
-//		assertEquals(tous.size(), 3);
-//		
-//		jpa.supprimer(jpa.getDerniereCle());
-//		assertNotNull(tous);
-//		assertEquals(tous.size(), 2);
-//		
-//	}
+	@Test
+	void testCreerSupprimer() {
+		List<PersonnePOJO> tous = null;
+		PersonnePOJO pers = new PersonnePOJO();
+		pers.setNom("Sylla");
+		pers.setPrenom("Nafi");
+		pers.setTelephone("0612345678");
+		
+		tous = jpa.lireTous();
+		assertNotNull(tous);
+		assertEquals(2, tous.size());
+		
+		jpa.creer(pers);
+		pers.setId(jpa.getDerniereCle());
+
+		assertNotNull(tous);
+		assertEquals(tous.size(), 3);
+		
+		int persASupprimer = jpa.getDerniereCle();
+		jpa.supprimer(persASupprimer);
+		assertNotNull(tous);
+		assertEquals(tous.size(), 2);
+	}
 	
 	
 	@Test
