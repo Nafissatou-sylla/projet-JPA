@@ -62,15 +62,13 @@ class AccesJPATests {
 	}
 	
 	
-	
-	
 	@Test
 	void testModifier() {
 		PersonnePOJO aSauvegarder = null;
 		PersonnePOJO aModifier = null;
 		aModifier = jpa.lire(1);
 		
-		//on vérifie les données 
+		//on vérifie les données de la base dd
 		assertEquals("Dupond", aModifier.getNom());
 		assertEquals("gérard", aModifier.getPrenom());
 		assertEquals("0623547612", aModifier.getTelephone());
@@ -80,20 +78,23 @@ class AccesJPATests {
 		aModifier.setPrenom("Nafi");
 		aModifier.setTelephone("0712345678");
 		
+		//on modifie maintenant
 		jpa.modifier(aModifier);
-		aModifier = jpa.lire(1);
 		
+		aModifier = jpa.lire(1);
+		//on vérifie si la modifiacation est bon
 		assertEquals("Sylla",  aModifier.getNom());
 		assertEquals("Nafi", aModifier.getPrenom());
 		assertEquals("0712345678", aModifier.getTelephone());
 		
-		//on remets à l'état initial
+		//on remets la bdd à l'état initial
 		aSauvegarder =jpa.lire(1);
 		
 		aSauvegarder.setNom("Dupond");
 		aSauvegarder.setPrenom("gérard");
 		aSauvegarder.setTelephone("0623547612");
 		
+		//on remet les valeurs initial
 		jpa.modifier(aSauvegarder);
 
 		assertEquals("Dupond", aSauvegarder.getNom());
